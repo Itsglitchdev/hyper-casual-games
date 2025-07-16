@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class RingO_Player : MonoBehaviour
 {
@@ -24,6 +25,12 @@ public class RingO_Player : MonoBehaviour
 
     void Update()
     {
+
+        if(RingO_GameManagerr.instance.isGameStart == false)  return;
+
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown("space"))
         {
             ToggleLane();
@@ -38,6 +45,7 @@ public class RingO_Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(RingO_GameManagerr.instance.isGameStart == false)  return;
         CircularMovement();
     }
 
@@ -57,13 +65,14 @@ public class RingO_Player : MonoBehaviour
     {
         if (collision.CompareTag("Coin"))
         {
-            RingO_GameManagerr.instance.AddScore(1);
+            RingO_GameManagerr.instance.AddScore();
             Destroy(collision.gameObject);
         }
 
         if (collision.CompareTag("Obstacle"))
         {
             Debug.Log("Game Over");
+            RingO_GameManagerr.instance.GameOver();
         }
     }
 

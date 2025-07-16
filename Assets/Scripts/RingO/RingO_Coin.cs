@@ -7,6 +7,8 @@ public class RingO_Coin : MonoBehaviour
 
     void Update()
     {
+        if(RingO_GameManagerr.instance.isGameStart == false)  return;
+        
         transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
     }
 }

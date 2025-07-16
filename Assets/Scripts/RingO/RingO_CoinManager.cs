@@ -20,15 +20,18 @@ public class RingO_CoinManager : MonoBehaviour
     void OnEnable()
     {
         RingO_GameManagerr.instance.OnCoinCollected += OnCoinCollected;
+        RingO_GameManagerr.instance.OnGameOver += DestroyAllCoins;
     }
 
     void OnDisable()
     {
         RingO_GameManagerr.instance.OnCoinCollected -= OnCoinCollected;
+        RingO_GameManagerr.instance.OnGameOver -= DestroyAllCoins;
     }
 
     void InstansiateCoin()
     {
+
         float coinPosY = Random.value > 0.6f ? coinLan1PosY : coinLan2PosY;
 
         float angleDeg = Random.Range(0f, 360f);
@@ -43,14 +46,23 @@ public class RingO_CoinManager : MonoBehaviour
         coins.Add(coin);
     }
 
-    void removeCoin()
+
+    void RemoveCoin()
     {
         coins.Remove(coins[0]);
     }
-    
-    void OnCoinCollected()
+
+    void OnCoinCollected(int value)
     {
-        removeCoin();
+        RemoveCoin();
         InstansiateCoin();
+    }
+    
+    void DestroyAllCoins()
+    {
+        foreach (GameObject coin in coins)
+        {
+            Destroy(coin);
+        }
     }
 }
