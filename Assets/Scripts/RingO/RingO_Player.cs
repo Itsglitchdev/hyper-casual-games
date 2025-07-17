@@ -10,7 +10,7 @@ public class RingO_Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 80f;
 
     private readonly float cicularLan1PosY = 2.4f;
-    private readonly float cicularLan2PosY = 1.76f;
+    private readonly float cicularLan2PosY = 1.75f;
 
     private float lanPosY;
     private float targetLaneY;
@@ -21,6 +21,7 @@ public class RingO_Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         lanPosY = childPlayer.localPosition.y;
         targetLaneY = lanPosY;
+        gameObject.SetActive(true);
     }
 
     void Update()
@@ -51,6 +52,7 @@ public class RingO_Player : MonoBehaviour
 
     void ToggleLane()
     {
+        RingO_SoundManager.instance.PlayLaneChangeSound();
         targetLaneY = Mathf.Approximately(targetLaneY, cicularLan1PosY) ? cicularLan2PosY : cicularLan1PosY;
     }
 
@@ -65,6 +67,8 @@ public class RingO_Player : MonoBehaviour
     {
         if (collision.CompareTag("Coin"))
         {
+            RingO_SoundManager.instance.PlayCoinCollectSound();
+            RingO_GameManagerr.instance.PlayCoinCollectEffect(collision.transform.position);
             RingO_GameManagerr.instance.AddScore();
             Destroy(collision.gameObject);
         }
@@ -72,7 +76,11 @@ public class RingO_Player : MonoBehaviour
         if (collision.CompareTag("Obstacle"))
         {
             Debug.Log("Game Over");
+            RingO_SoundManager.instance.PlayPlayerDiedSound();
+            RingO_GameManagerr.instance.PlayPlayerDiedEffect(collision.transform.position);
+            gameObject.SetActive(false);
             RingO_GameManagerr.instance.GameOver();
+
         }
     }
 

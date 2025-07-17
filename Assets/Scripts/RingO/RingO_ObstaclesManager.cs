@@ -8,7 +8,7 @@ public class RingO_ObstaclesManager : MonoBehaviour
     [SerializeField] private GameObject obstaclePrefab;
 
     private readonly float obstacleLan1PosY = 2.4f;
-    private readonly float obstacleLan2PosY = 1.76f;
+    private readonly float obstacleLan2PosY = 1.75f;
 
     private List<GameObject> obstacles = new List<GameObject>();
     private int initallySpawned = 2;

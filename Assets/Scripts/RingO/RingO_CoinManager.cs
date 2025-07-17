@@ -8,7 +8,7 @@ public class RingO_CoinManager : MonoBehaviour
     [SerializeField] private GameObject coinPrefab;
 
     private readonly float coinLan1PosY = 2.4f;
-    private readonly float coinLan2PosY = 1.76f;
+    private readonly float coinLan2PosY = 1.75f;
 
     private List<GameObject> coins = new List<GameObject>();
 

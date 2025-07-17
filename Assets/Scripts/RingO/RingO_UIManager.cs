@@ -71,6 +71,7 @@ public class RingO_UIManager : MonoBehaviour
         pauseButton.onClick.AddListener(OnPauseButtonClick);
         resumeButton.onClick.AddListener(OnResumeButtonClick);
         restartButton.onClick.AddListener(OnRestartButtonClick);
+        homeButton.onClick.AddListener(OnHomeButtonClick);
     }
 
     void StartGameplayUI()
@@ -102,7 +103,11 @@ public class RingO_UIManager : MonoBehaviour
         OnResumeButtonClicked?.Invoke();
         pausePanel.SetActive(true);
         resumePanel.SetActive(false);
+    }
 
+    void OnHomeButtonClick()
+    {
+        SceneLoader.Load(Scene.Loading, Scene.GameHub);    
     }
 
     void OnRestartButtonClick()
