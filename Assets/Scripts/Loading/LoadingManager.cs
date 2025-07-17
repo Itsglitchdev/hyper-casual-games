@@ -11,7 +11,7 @@ public class LoadingManager : MonoBehaviour
     [SerializeField] private TMP_Text gameTipText;
     [SerializeField] private Slider loadingSlider;
 
-    private readonly float minimumLoadingTime = 2f;
+    private readonly float minimumLoadingTime = 3.5f;
 
     void Start()
     {
@@ -55,9 +55,9 @@ public class LoadingManager : MonoBehaviour
         switch (sceneName) {
 
             case "RingO":
-                return "Game Tip : RingO";
+                return "Game Tip : Things aren’t what they seem... Tap to switch lanes, but beware obstacles flip in a blink!";
             default:
-                return "Get ready to play!";
+                return "Sure? Are you give up? I think you can, but u are tha same.";
         }
 
     }
