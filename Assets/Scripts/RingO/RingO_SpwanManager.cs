@@ -14,8 +14,12 @@ public class RingO_SpwanManager : MonoBehaviour
     [SerializeField] private Transform coinParent;
     [SerializeField] private Transform obstacleParent;
 
-    private readonly float spwanLan1PosY = 2.4f;
-    private readonly float spwanLan2PosY = 1.75f;
+    // private readonly float spwanLan1PosY = 2.4f;
+    // private readonly float spwanLan2PosY = 1.75f;
+
+    private readonly float spwanLan1PosY = 2.13f;
+    private readonly float spwanLan2PosY = 1.53f;
+
     private const float minDistanceBetweenCoinsSpawns = 0.75f;
     private const float minDistanceBetweenObstaclesSpawns = 1.5f;
     private int initallySpawnedObstacles = 2;

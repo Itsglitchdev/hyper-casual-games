@@ -9,16 +9,18 @@ public class RingO_Player : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 80f;
 
-    private readonly float cicularLan1PosY = 2.4f;
-    private readonly float cicularLan2PosY = 1.75f;
+    private readonly float cicularLan1PosY = 2.13f;
+    private readonly float cicularLan2PosY = 1.53f;
+
+    
+    // private readonly float cicularLan1PosY = 2.4f;
+    // private readonly float cicularLan2PosY = 1.75f;
 
     private float lanPosY;
     private float targetLaneY;
-    private Rigidbody2D rb;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         lanPosY = childPlayer.localPosition.y;
         targetLaneY = lanPosY;
         gameObject.SetActive(true);
