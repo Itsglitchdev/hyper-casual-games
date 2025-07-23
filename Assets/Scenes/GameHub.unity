@@ -1167,6 +1167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ringOGameButton: {fileID: 1321708917}
+  flipFinityGameButton: {fileID: 1411971490}
 --- !u!1 &1886176460
 GameObject:
   m_ObjectHideFlags: 0

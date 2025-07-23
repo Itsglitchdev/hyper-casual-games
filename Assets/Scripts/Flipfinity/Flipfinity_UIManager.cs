@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class Flipfinity_UIManager : MonoBehaviour
 {
 
-    public event Action OnPTapToPlayButtonClicked;
-    public event Action OnPauseButtonClicked;
-    public event Action OnResumeButtonClicked;
-    public event Action OnRestartButtonClicked;
+    public static event Action OnPTapToPlayButtonClicked;
+    public static event Action OnPauseButtonClicked;
+    public static event Action OnResumeButtonClicked;
+    public static event Action OnRestartButtonClicked;
 
     [Header("Buttons")]
     [SerializeField] private Button tapToPlayButton;
@@ -28,7 +28,6 @@ public class Flipfinity_UIManager : MonoBehaviour
     [Header("Texts")]
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI highScoreText;
-    [SerializeField] private TextMeshProUGUI tapToPlayText;
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
     [SerializeField] private TextMeshProUGUI gameOverHighScoreText;
 
@@ -37,6 +36,25 @@ public class Flipfinity_UIManager : MonoBehaviour
     {
         ButtonEventListener();
     }
+
+    void OnEnable()
+    {
+        Flipfinity_GameManager.OnGameInitialized += InitializeGameUI;
+        Flipfinity_GameManager.OnScoreUpdated += UpdateScoreUI;
+        Flipfinity_GameManager.OnHighScoreUpdated += UpdateHighScoreUI;
+        Flipfinity_GameManager.OnGameOverUIText += GameOverUIText;
+        Flipfinity_GameManager.OnGameOver += GameOverUI;
+    }
+
+    void OnDisable()
+    {
+        Flipfinity_GameManager.OnGameInitialized -= InitializeGameUI;        
+        Flipfinity_GameManager.OnScoreUpdated -= UpdateScoreUI;
+        Flipfinity_GameManager.OnHighScoreUpdated -= UpdateHighScoreUI;
+        Flipfinity_GameManager.OnGameOverUIText -= GameOverUIText;
+        Flipfinity_GameManager.OnGameOver -= GameOverUI;
+    }
+
 
     void InitializeGameUI()
     {
@@ -84,7 +102,7 @@ public class Flipfinity_UIManager : MonoBehaviour
     {
         OnResumeButtonClicked?.Invoke();
         pausePanel.SetActive(true);
-        resumePanel.SetActive(false);
+        resumePanel.SetActive(false); 
     }
 
     void OnHomeButtonClick()

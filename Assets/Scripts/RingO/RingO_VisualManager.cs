@@ -13,7 +13,7 @@ public class RingO_VisualManager : MonoBehaviour
 
     void OnDisable()
     {
-
+        RingO_GameManagerr.instance.OnBackgroundChange -= ApplyColor;
     }
 
     void ApplyColor()
