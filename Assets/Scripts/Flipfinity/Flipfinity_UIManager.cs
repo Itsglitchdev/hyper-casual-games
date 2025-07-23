@@ -48,7 +48,7 @@ public class Flipfinity_UIManager : MonoBehaviour
 
     void OnDisable()
     {
-        Flipfinity_GameManager.OnGameInitialized -= InitializeGameUI;        
+        Flipfinity_GameManager.OnGameInitialized -= InitializeGameUI;
         Flipfinity_GameManager.OnScoreUpdated -= UpdateScoreUI;
         Flipfinity_GameManager.OnHighScoreUpdated -= UpdateHighScoreUI;
         Flipfinity_GameManager.OnGameOverUIText -= GameOverUIText;
@@ -66,7 +66,7 @@ public class Flipfinity_UIManager : MonoBehaviour
     }
 
     void ButtonEventListener()
-    { 
+    {
         tapToPlayButton.onClick.AddListener(StartGamePlayUI);
         pauseButton.onClick.AddListener(OnPauseButtonClick);
         resumeButton.onClick.AddListener(OnResumeButtonClick);
@@ -90,7 +90,7 @@ public class Flipfinity_UIManager : MonoBehaviour
         pausePanel.SetActive(false);
         restartPanel.SetActive(true);
     }
-    
+
     void OnPauseButtonClick()
     {
         OnPauseButtonClicked?.Invoke();
@@ -102,12 +102,12 @@ public class Flipfinity_UIManager : MonoBehaviour
     {
         OnResumeButtonClicked?.Invoke();
         pausePanel.SetActive(true);
-        resumePanel.SetActive(false); 
+        resumePanel.SetActive(false);
     }
 
     void OnHomeButtonClick()
     {
-        SceneLoader.Load(Scene.Loading, Scene.GameHub);    
+        SceneLoader.Load(Scene.Loading, Scene.GameHub);
     }
 
     void OnRestartButtonClick()
