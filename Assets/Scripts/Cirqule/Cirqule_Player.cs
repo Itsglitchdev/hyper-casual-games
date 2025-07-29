@@ -1,11 +1,17 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Cirqule_Player : MonoBehaviour
 {
 
+    public static event Action OnCollectableColleted;
+    public static event Action OnDirectionChanged;
+    public static event Action OnPlayerDied;
+    public static event Action<Vector3> OnPlayerDiedEffect;
+
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 100f;
+    [SerializeField] private float moveSpeed = 125f;
 
     private float rotationDirection = 1f;
 
@@ -16,6 +22,8 @@ public class Cirqule_Player : MonoBehaviour
 
     void Update()
     {
+        if(Cirqule_GameManager.Instance.IsGameStart == false) return;
+
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
@@ -26,12 +34,15 @@ public class Cirqule_Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(Cirqule_GameManager.Instance.IsGameStart == false) return;
+
         CircularMovement();
     }
 
     void ToggleDirection()
     {
         rotationDirection *= -1f;
+        OnDirectionChanged?.Invoke();
     }
 
     void CircularMovement()
@@ -45,13 +56,15 @@ public class Cirqule_Player : MonoBehaviour
         if (collision.CompareTag("Collectable"))
         {
             collision.gameObject.SetActive(false);
-            // Destroy(collision.gameObject);
+            OnCollectableColleted?.Invoke();
         }
-        
+
         if (collision.CompareTag("Obstacle"))
         {
             Debug.Log("Game Over");
             gameObject.SetActive(false);
+            OnPlayerDiedEffect?.Invoke(collision.transform.position);
+            OnPlayerDied?.Invoke();
         }
     }
 

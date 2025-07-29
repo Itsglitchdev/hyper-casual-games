@@ -6,17 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GameHub.unity
-    guid: 425053df00bfbfb45a11651db66e5516
+    path: Assets/Scenes/Cirqule_GameMenu.unity
+    guid: ce814d516b14f4c44a80ba3fb41202ee
   - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: a657ce7bd3dd155429ad40a88d642456
   - enabled: 1
-    path: Assets/Scenes/RingO.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Flipfinity.unity
-    guid: 54e2e49b08c59d94993b7e6ea21c961c
+    path: Assets/Scenes/Cirqule.unity
+    guid: 3d523861df8fe0348ad82d596936a86d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -57,9 +57,12 @@ public class LoadingManager : MonoBehaviour
             case "RingO":
                 return "Game Tip : Things aren’t what they seem... Tap to switch lanes, but beware obstacles flip in a blink!";
             case "Flipfinity":
-                return "Game Tip : Timing is everything..tap to change direction at just the right moment and stay in the rhythm.";    
+                return "Game Tip : Timing is everything..tap to change direction at just the right moment and stay in the rhythm."; 
+            case "Cirqule":
+                return "Game Tip : Stay sharp! Move in perfect circles, collect lines for points, and dodge obstacles!";
+   
             default:
-                return "Sure? Are you give up? I think you can, but u are tha same.";
+                return "Sure? Are you give up? I think you can, but u are the same.";
         }
 
     }
